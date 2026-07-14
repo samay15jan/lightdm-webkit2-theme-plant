@@ -1,4 +1,3 @@
-
 class Authenticate {
 	constructor() {
 		this._passwordBox = document.querySelector('#input-password-box');
@@ -7,18 +6,20 @@ class Authenticate {
 		this._passwordInputContainer = document.querySelector('#input-password-container');
 		this._tooltipPassword = document.querySelector('#tooltip-password');
 		this._password = '';
-		
 		this._init();
-		this._language = new Language;		
 	}
 
 	_returnRandomErrorMessages() {
-		const errorMessages = this._language._getErrorMessages();
+		const errorMessages = [
+			'Invalid Password!',
+		];
 		return errorMessages[Math.floor(Math.random() * errorMessages.length)];	
 	}
 
 	_returnRandomSuccessfulMessages() {
-		const errorMessages = this._language._getSuccessfulMessages();
+		const errorMessages = [
+			'Logging You In!',
+		];
 		return errorMessages[Math.floor(Math.random() * errorMessages.length)];
 	}
 
@@ -69,10 +70,8 @@ class Authenticate {
 		// Add a delay before unlocking
 		setTimeout(
 			() => {
-				var defSession = String(sessions.getDefaultSession());
-				console.log(defSession);
 				this._buttonAuthenticate.classList.remove('authentication-success');
-				lightdm.start_session(defSession);
+				lightdm.start_session_sync(String(sessions.getDefaultSession()));
 				this._tooltipPassword.classList.remove('tooltip-success');
 			},
 			1000
@@ -114,8 +113,7 @@ class Authenticate {
 		this._buttonAuthenticate.addEventListener(
 			'click',
 			() => {
-				//console.log(lightdm.in_authentication);
-				//console.log("Auth: " + lightdm.is_authenticated);
+				console.log(lightdm.in_authentication);
 				this._authFailedRemove();
 				this._password = this._passwordInput.value;
 				lightdm.respond(String(this._password));

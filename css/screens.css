@@ -99,8 +99,11 @@
 	pointer-events: none;
 }
 
-#screen-greeter-content-parent.screen-content-parent {
-	display: inline-block;
+#screen-greeter-content-parent {
+	position: absolute;
+    	top: 80%;
+    	left: 75%;
+    	transform: translateX(-10%);
 }
 
 .greeter-content {
@@ -108,13 +111,6 @@
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	user-select: none;
-}
-
-#greeter-message.greeter-content {
-	font-size: 32pt;
-	font-weight: 400;
-	text-align: center;
-	color: var(--global-fg);
 }
 
 #greeter-clock.greeter-content {

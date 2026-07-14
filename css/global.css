@@ -55,9 +55,8 @@ body {
 	background-color: #252525;
 }
 
-html * {
-	color: var(--global-fg) !important;
-	font-family: 'Inter', 'Roboto', sans-serif !important;
+.app-shell :is(.accent, .growing-badge, .growing-dot, .music-player.is-playing .wave-bar) {
+	color: var(--accent) !important;
 }
 
 /* Remove outline on input fields on chrome */

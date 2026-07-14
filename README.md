@@ -1,115 +1,114 @@
-## glorious - a lightdm webkit2 theme
+# Plant
 
-[![maintained](https://img.shields.io/maintenance/yes/2020?label=maintained&style=flat-square)](https://github.com/manilarome/the-glorious-lightdm-webkit2-theme/commits/master) [![contributions](https://img.shields.io/badge/contribution-welcome-brightgreen&?style=flat-square)](https://github.com/manilarome/the-glorious-lightdm-webkit2-theme/pulls) [![HitCount](http://hits.dwyl.com/manilarome/the-glorious-lightdm-webkit2-theme.svg)](http://hits.dwyl.com/manilarome/the-glorious-lightdm-webkit2-theme) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/0812167ef9954b74ac23f7c1bfeb3764)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=manilarome/the-glorious-lightdm-webkit2-theme&amp;utm_campaign=Badge_Grade)
+A minimal, modern, and customizable **LightDM WebKit2** theme.
 
-A sleek, modern, and glorified lightdm webkit2 theme
+> This project is a customized fork of the original **Glorious** LightDM theme with visual and UI modifications.
 
-## [Live Demo](https://manilarome.github.io/lightdm-webkit2-theme-glorious)
+<p align="center">
+  <img src="plant.png" alt="Plant Theme Preview">
+</p>
 
-### Demo password: `toor`
+## Features
 
-<p align='center'><img alt='glorious' src='glorious.gif'/><br/><i>glorious - a lightdm webkit 2 theme</i></p>
+- Modern login interface
+- Multi-user support
+- Session selection
+- Power menu
+- Keyboard navigation
+- Configurable appearance
+- Vanilla JavaScript
+- LightDM WebKit2 compatible
 
-### Dependencies
+---
 
-Please make sure you don't have an ancient version of these.
+## Requirements
 
-+ lightdm
-+ lightdm-webkit2-greeter
+- `lightdm`
+- `lightdm-webkit2-greeter`
 
-### Installation
+---
 
-0. If you're using `systemd`, make sure that `lightdm.service` or `lightdm-plymouth.service` is enabled and running. There's a bunch of guides on the internet. [Archwiki](https://wiki.archlinux.org/index.php/LightDM) is recommended.
+## Installation
 
-1. Install it. You can get the theme by cloning this repo or by installing it from `AUR` using `makepkg` or an AUR helper like `yay`.
+Clone the repository.
 
-	+ AUR route.
+```bash
+git clone https://github.com/samay15jan/plant.git
+cd plant
+```
 
-		```sh
-		# AUR Helper
-		yay -Syu lightdm-webkit2-theme-glorious
+Copy the theme.
 
-		# Makepkg route
-		git clone https://aur.archlinux.org/lightdm-webkit2-theme-glorious.git
-		cd lightdm-webkit2-theme-glorious
-		makepkg -sri
-		```
+```bash
+sudo cp -r . /usr/share/lightdm-webkit/themes/plant
+```
 
-	+ Clone the repo route.
+Configure LightDM to use the WebKit greeter.
 
-		1. Download and extract the latest stable release from [here](https://github.com/manilarome/lightdm-webkit2-theme-glorious/releases).
-		2. Copy it to the lightdm-webkit theme folder:
+```ini
+# /etc/lightdm/lightdm.conf
 
-			```sh
-			cp -r lightdm-webkit2-theme-glorious /usr/share/lightdm-webkit/themes/glorious
-			```
+[Seat:*]
+greeter-session=lightdm-webkit2-greeter
+```
 
-3. Set lightdm greeter session to webkit2.
+Configure the WebKit greeter.
 
-	```sh
-	# Set default lightdm greeter to lightdm-webkit2-greeter
-	sudo sed -i 's/^\(#?greeter\)-session\s*=\s*\(.*\)/greeter-session = lightdm-webkit2-greeter #\1/ #\2g' /etc/lightdm/lightdm.conf
-	```
+```ini
+# /etc/lightdm/lightdm-webkit2-greeter.conf
 
-4. Set it as the lightdm webkit2 theme then enable `debug_mode` by setting it to `true`. Why do we need to enable `debug_mode`? Sometimes you will be greeted by an error. And this error is due to a race condition where the theme is trying to access the `lightdm` object even though it doesn't exist *yet*. Debug mode will allow you to `right-click` and `reload` the greeter just like a webpage.
+webkit_theme = plant
+debug_mode = true
+```
 
-	```sh
-	# Set default lightdm-webkit2-greeter theme to Glorious
-	sudo sed -i 's/^webkit_theme\s*=\s*\(.*\)/webkit_theme = glorious #\1/g' /etc/lightdm/lightdm-webkit2-greeter.conf
-	sudo sed -i 's/^debug_mode\s*=\s*\(.*\)/debug_mode = true #\1/g' /etc/lightdm/lightdm-webkit2-greeter.conf
-	```
+Restart LightDM.
 
-### Uninstall
+```bash
+sudo systemctl restart lightdm
+```
 
-1. Follow the [installation instruction](#installation) in reverse order.
+---
 
-### Features
+## Customization
 
-+ Multi-user support
-+ Customization and Settings
-+ Keyboard navigation
-+ Remappable keybindings
-+ Swipe gestures
-+ Vanilla Javascript!
+You can customize the theme by editing the files inside the theme directory.
 
-### Swipe gestures
+Common changes include:
 
-Why do we have this? Linux can be installed on almost anything. Yes, even on a potato. So it exists to save myself some time if someone (including myself) decided to use this theme on a touch screen device (like touch screen potato? Who knows).
+- Wallpapers
+- Colors
+- Fonts
+- Animations
+- Layout
+- JavaScript behavior
+- 3D elements
 
-+ Swiping up on the greeter screen will close it.
-+ Swiping down on the login screen will open the greeter screen.
-+ Swiping left will open the dashboard.
-+ Swiping right will close the dashboard.
+---
 
-### Keybinds
+## Directory
 
-The default modifier is <kbd>Alt</kbd>. You can change it in the settings.
+```
+plant/
+├── css/
+├── js/
+├── assets/
+├── fonts/
+├── index.html
+└── ...
+```
 
-+ <kbd>Modifier + s</kbd> opens the dashboard.
-+ <kbd>Modifier + e</kbd> opens the session selection.
-+ <kbd>Modifier + x</kbd> opens the power selection.
-+ <kbd>Modifier + y</kbd> opens the account selection.
-+ <kbd>Escape</kbd> to close or go back.
+---
 
-### Customization and Settings
+## Notes
 
-+ Color customization supports `#RGB`, `#RRGGBB`, and `#RRGGBBAA`.
-+ Blur strength settings only allows an integer with `px` suffix.
-+ Animation speed supports `s` and `ms`.
-+ Background image selection. Supports randomness.
+- Wallpapers are loaded from `/usr/share/backgrounds/`.
+- Set your profile picture through your desktop environment or a utility such as `mugshot`.
+- Enable `debug_mode` while developing to inspect and reload the greeter.
 
-### Changing clock mode
+---
 
-There are two clock modes available - `24-hour` and `12-hour`. Switch between clock modes by just clicking on the clock. Simple.
+## Credits
 
-### Notes
+This project is based on the excellent **Glorious** LightDM WebKit2 theme by **manilarome**.
 
-+ Add more background images by putting your wallpapers/images in `/usr/share/backgrounds/`.
-+ Non-image and directory inside `/usr/share/backgrounds/` will cause an error! You will likely encounter this if you installed a package (for example `archlinux-wallpaper` that includes `AUTHORS` file).
-+ Set your profile image in system settings or by using `mugshot`.
-+ Missing DE/WM logo? Submit a [pull request](https://github.com/manilarome/lightdm-webkit2-theme-glorious/pulls)!
-+ Translations are not yet supported. PR's are welcome!
-
-### Credits
-
-<span>Background image by <a href="https://unsplash.com/@korpa?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Jr Korpa</a> on <a href="https://unsplash.com/s/photos/cherry-blossoms-purple?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+This repository contains my own modifications, UI changes, and customizations.

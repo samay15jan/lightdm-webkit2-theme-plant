@@ -1,86 +1,50 @@
-let ran = false;
+// Instantiate debug mode
+const debug = new Debug();
 
-async function initGreeter() {
-  if (ran) return;
-  ran = true;
+// Instantiate image profile
+const userProfile = new UserProfile();
 
-  if (greeter_config.greeter.debug_mode) {
-    // Instantiate debug mode
-    // Comment this line to let lightdm do its own things
-    debug = new Debug();
-  }
+// Instantiate greeter screen
+const greeterScreen = new GreeterScreen();
 
-	lightdm.authentication_complete?.connect( () => authentication_complete() );
+// Instantiate dark screen
+const loginFade = new LoginFade();
 
-  lightdm.show_prompt?.connect( (prompt, type) => {
-    console.log("PROMPT!");
-    console.log(prompt, type);
-  } );
+// Instantiate goodbye screen
+const goodbye = new Goodbye();
 
-  lightdm.show_message?.connect( (msg, type) => {
-    console.log("MESSAGE!");
-    console.log(msg, type);
-  } );
+// Instantiate accounts settings
+const accounts = new Accounts();
 
-  // Instantiate image profile
-  userProfile = new UserProfile();
+// Instantiate sessions settings
+const sessions = new Sessions();
 
-  // Instantiate greeter screen
-  greeterScreen = new GreeterScreen();
+// Instantiate power settings
+const power = new Power();
 
-  // Instantiate dark screen
-  loginFade = new LoginFade();
+// Instantiate sidebar
+const sidebar = new Sidebar();
 
-  // Instantiate goodbye screen
-  goodbye = new Goodbye();
+// Instantiate main screen buttons
+const mainScreenButtons = new MainScreenButtons();
 
-  // Instantiate accounts settings
-  accounts = new Accounts();
+// Instantiate backgrounds settings
+const backgrounds = new Backgrounds();
 
-  // Instantiate sessions settings
-  sessions = new Sessions();
+// Instantiate sidebar navigation
+const sidebarNavigate = new SidebarNavigate();
 
-  // Instantiate power settings
-  power = new Power();
+// Instantiate key binds
+const keyBinds = new KeyBinds();
 
-  // Instantiate sidebar
-  sidebar = new Sidebar();
+// Instantiate themes
+const themes = new Themes();
 
-  // Instantiate main screen buttons
-  mainScreenButtons = new MainScreenButtons();
+// Instantiate key events
+const keyEvents = new KeyEvents();
 
-  // Instantiate date time
-  dateTime = new DateTime();
+// Instantiate swipe event callbacks
+const swipeEventCallback = new SwipeEventCallback();
 
-  // Instantiate backgrounds settings
-  backgrounds = new Backgrounds();
-  await backgrounds._init();
-
-  // Instantiate sidebar navigation
-  sidebarNavigate = new SidebarNavigate();
-
-  // Instantiate key binds
-  keyBinds = new KeyBinds();
-
-  // Instantiate themes
-  themes = new Themes();
-
-  // Instantiate key events
-  keyEvents = new KeyEvents();
-
-  // Instantiate swipe event callbacks
-  swipeEventCallback = new SwipeEventCallback();
-
-  // Instantiate authentication
-  authenticate = new Authenticate();
-
- }
-
-window.addEventListener("GreeterReady", initGreeter)
-
-const greeterReady = new Event("GreeterReady");
-
-setTimeout(() => {
-  if (!("lightdm" in window)) debug = new Debug();
-  window.dispatchEvent(greeterReady);
-}, 1000)
+// Instantiate authentication
+const authenticate = new Authenticate();

@@ -5,32 +5,21 @@ class Debug {
 	}
 
 	_loadDebugObjects() {
-		if (!window.greeter_config) {
-			window.greeter_config = {
-				greeter: {
-					debug_mode: true,
-				},
-				branding: {
-					background_images_dir: "",
-				}
-			};
-			window.greeter_config.get_str = function() {
+		if (!window.config) {
+			window.config = {};
+			window.config.get_str = function() {
 				return '/usr/share/lightdm-webkit/themes/lightdm-webkit2-theme-glorious/assets/';
 			};
 		}
 
-		if (!window.theme_utils) {
-			window.theme_utils = {};
-			window.theme_utils.dirlist = function(path, mode, callback) {
-				var result = [];
-				callback(result)
+		if (!window.greeterutil) {
+			window.greeterutil = {};
+			window.greeterutil.dirlist = function(path) {
+				return false;
 			};
-			window.theme_utils.bind_this = function(context) {return context}
 		}
 
-		/* This needs to be forced in debug mode */
-		if (true) {
-			console.log("Debug!");
+		if (!window.lightdm) {
 			window.lightdm = {
 				is_authenticated: false,
 				authentication_user: null,
@@ -137,7 +126,7 @@ class Debug {
 					}
 					authentication_complete();
 				},
-				start_session: session => {
+				start_session_sync: session => {
 					alert(`Logged with session: '${session}'!`);
 					location.reload(); 
 				},

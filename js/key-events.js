@@ -66,7 +66,7 @@ class KeyEvents {
 					return;
 				}
 
-				if ((e.key === ' ') || (e.code === 'Space') || (e.code === 'NumpadEnter')) {
+				if ((e.key === ' ') || (e.code === 'Space')) {
 					if (greeterScreen.getGreeterVisibility()) {
 						greeterScreen.toggleGreeter();
 						return;
