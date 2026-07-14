@@ -1,62 +1,84 @@
 # Plant
 
-A minimal, modern, and customizable **LightDM WebKit2** theme.
-
-> This project is a customized fork of the original **Glorious** LightDM theme with visual and UI modifications.
 
 <p align="center">
-  <img src="plant.png" alt="Plant Theme Preview">
+  A modern and customizable LightDM WebKit2 theme.
 </p>
+
+<p align="center">
+  <a href="https://aur.archlinux.org/packages/lightdm-webkit2-theme-plant">
+    <img src="https://img.shields.io/aur/version/lightdm-webkit2-theme-plant?style=flat-square" alt="AUR Version">
+  </a>
+  <a href="https://aur.archlinux.org/packages/lightdm-webkit2-theme-plant">
+    <img src="https://img.shields.io/aur/votes/lightdm-webkit2-theme-plant?style=flat-square" alt="AUR Votes">
+  </a>
+  <img src="https://img.shields.io/github/license/samay15jan/lightdm-webkit2-theme-plant?style=flat-square" alt="License">
+  <img src="https://img.shields.io/github/stars/samay15jan/lightdm-webkit2-theme-plant?style=flat-square" alt="GitHub Stars">
+</p>
+
+<p align="center">
+  <img src="plant.png" alt="Plant LightDM Theme" width="900">
+</p>
+
+---
 
 ## Features
 
-- Modern login interface
+- Modern interface
+- Interactive 3D plant
 - Multi-user support
 - Session selection
 - Power menu
 - Keyboard navigation
-- Configurable appearance
-- Vanilla JavaScript
-- LightDM WebKit2 compatible
+- Customizable appearance
+- Built with Vanilla JavaScript and Three.js
 
 ---
 
 ## Requirements
 
-- `lightdm`
-- `lightdm-webkit2-greeter`
+- lightdm
+- lightdm-webkit2-greeter
 
 ---
 
 ## Installation
 
-Clone the repository.
+### AUR (Recommended)
 
 ```bash
-git clone https://github.com/samay15jan/plant.git
-cd plant
+yay -S lightdm-webkit2-theme-plant
 ```
 
-Copy the theme.
+or
 
 ```bash
+paru -S lightdm-webkit2-theme-plant
+```
+
+### Manual
+
+```bash
+git clone https://github.com/samay15jan/lightdm-webkit2-theme-plant.git
+cd lightdm-webkit2-theme-plant
+
 sudo cp -r . /usr/share/lightdm-webkit/themes/plant
 ```
 
-Configure LightDM to use the WebKit greeter.
+Configure LightDM.
+
+`/etc/lightdm/lightdm.conf`
 
 ```ini
-# /etc/lightdm/lightdm.conf
-
 [Seat:*]
 greeter-session=lightdm-webkit2-greeter
 ```
 
-Configure the WebKit greeter.
+Configure the WebKit2 greeter.
+
+`/etc/lightdm/lightdm-webkit2-greeter.conf`
 
 ```ini
-# /etc/lightdm/lightdm-webkit2-greeter.conf
-
 webkit_theme = plant
 debug_mode = true
 ```
@@ -71,9 +93,9 @@ sudo systemctl restart lightdm
 
 ## Customization
 
-You can customize the theme by editing the files inside the theme directory.
+Plant can be customized by modifying its source files.
 
-Common changes include:
+You can customize:
 
 - Wallpapers
 - Colors
@@ -81,34 +103,16 @@ Common changes include:
 - Animations
 - Layout
 - JavaScript behavior
-- 3D elements
-
----
-
-## Directory
-
-```
-plant/
-├── css/
-├── js/
-├── assets/
-├── fonts/
-├── index.html
-└── ...
-```
-
----
-
-## Notes
-
-- Wallpapers are loaded from `/usr/share/backgrounds/`.
-- Set your profile picture through your desktop environment or a utility such as `mugshot`.
-- Enable `debug_mode` while developing to inspect and reload the greeter.
+- 3D scene
 
 ---
 
 ## Credits
 
-This project is based on the excellent **Glorious** LightDM WebKit2 theme by **manilarome**.
+Plant is based on the original Glorious LightDM WebKit2 theme by **manilarome** and includes substantial visual and functional modifications.
 
-This repository contains my own modifications, UI changes, and customizations.
+---
+
+## License
+
+Licensed under the MIT License.
